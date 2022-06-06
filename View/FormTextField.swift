@@ -15,9 +15,9 @@ struct FormTextField: View {
     var body: some View {
         HStack {
             if isSecure {
-                TextField(hintText, text: textContent)
-            } else {
                 SecureField(hintText, text: textContent)
+            } else {
+                TextField(hintText, text: textContent)
             }
         }
         .padding()
@@ -28,7 +28,7 @@ struct FormTextField: View {
 
 struct FormTextField_Previews: PreviewProvider {
     static var previews: some View {
-        FormTextField(hintText: "General", textContent: .constant(""))
+        FormTextField(hintText: "General", textContent: .constant("test"))
             .previewLayout(.sizeThatFits)
 
         FormTextField(hintText: "Secure", textContent: .constant("test"), isSecure: true)
