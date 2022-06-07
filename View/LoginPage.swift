@@ -13,6 +13,8 @@ struct LoginPage: View {
 
     @State private var _isSigningUp = false
 
+    @State private var _isBeingProcessed = false
+
     var body: some View {
         VStack {
             HStack {
@@ -24,15 +26,23 @@ struct LoginPage: View {
             .padding()
 
             FormTextField(hintText: "Email", textContent: $_email)
+                .disabled(_isBeingProcessed)
             FormTextField(hintText: "Password", textContent: $_password, isSecure: true)
+                .disabled(_isBeingProcessed)
 
             Button {
-
+                // TODO: remove DEV code.
+                _isBeingProcessed = true
             } label: {
-                Text("Login")
-                    .fontWeight(.bold)
+                if _isBeingProcessed {
+                    ProgressView()
+                } else {
+                    Text("Login")
+                        .fontWeight(.bold)
+                }
             }
             .buttonStyle(FormMainActivityButtonStyle())
+            .disabled(_isBeingProcessed)
 
             HStack {
                 Text("Not have an account?")
@@ -43,6 +53,7 @@ struct LoginPage: View {
                 } label: {
                     Text("SignUp")
                 }
+                .disabled(_isBeingProcessed)
             }
         }
         .padding()

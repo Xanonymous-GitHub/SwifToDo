@@ -13,6 +13,8 @@ struct SignUpPage: View {
     @State private var _password: String = ""
     @State private var _password2: String = ""
 
+    @State private var _isBeingProcessed = false
+
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -26,17 +28,27 @@ struct SignUpPage: View {
             .padding()
 
             FormTextField(hintText: "Name", textContent: $_username)
+                .disabled(_isBeingProcessed)
             FormTextField(hintText: "Email", textContent: $_email)
+                .disabled(_isBeingProcessed)
             FormTextField(hintText: "Password", textContent: $_password, isSecure: true)
+                .disabled(_isBeingProcessed)
             FormTextField(hintText: "Password", textContent: $_password2, isSecure: true)
+                .disabled(_isBeingProcessed)
 
             Button {
-
+                // TODO: remove DEV code.
+                _isBeingProcessed = true
             } label: {
-                Text("SignUp")
-                    .fontWeight(.bold)
+                if _isBeingProcessed {
+                    ProgressView()
+                } else {
+                    Text("SignUp")
+                        .fontWeight(.bold)
+                }
             }
             .buttonStyle(FormMainActivityButtonStyle())
+            .disabled(_isBeingProcessed)
         }
         .padding()
         .toolbar {
@@ -44,6 +56,7 @@ struct SignUpPage: View {
                 Button("Cancel") {
                     dismiss()
                 }
+                .disabled(_isBeingProcessed)
             }
         }
     }
