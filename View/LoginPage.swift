@@ -6,19 +6,19 @@
 //
 
 import SwiftUI
+import UIPilot
 
 struct LoginPage: View {
     @State private var _email: String = ""
     @State private var _password: String = ""
     @State private var _isSigningUp = false
+    @State private var presentAlert = false
 
-    @Environment(\.injected) var injected: DIContainer
-    @EnvironmentObject var state: LoginPageState
+    @EnvironmentObject private var _viewModel: AuthViewModel
+    @EnvironmentObject private var _pilot: UIPilot<AppRoute>
 
     var body: some View {
         VStack {
-            let authInteractor = injected.interactors.authInteractor
-
             HStack {
                 Text("Welcome!")
                     .font(.system(size: 40))
@@ -28,14 +28,14 @@ struct LoginPage: View {
             .padding()
 
             FormTextField(hintText: "Email", textContent: $_email)
-                .disabled(state.isLoading)
+                .disabled(_viewModel.state == .proccessing)
             FormTextField(hintText: "Password", textContent: $_password, isSecure: true)
-                .disabled(state.isLoading)
+                .disabled(_viewModel.state == .proccessing)
 
             Button {
-                authInteractor.login(credentials: LoginCredentials(email: _email, password: _password))
+                _viewModel.login(credentials: LoginCredentials(email: _email, password: _password))
             } label: {
-                if state.isLoading {
+                if _viewModel.state == .proccessing {
                     ProgressView()
                 } else {
                     Text("Login")
@@ -43,7 +43,24 @@ struct LoginPage: View {
                 }
             }
             .buttonStyle(FormMainActivityButtonStyle())
-            .disabled(state.isLoading)
+            .disabled(_viewModel.state == .proccessing)
+            .onReceive(_viewModel.$state) { state in
+                if state == .success {
+                    _email.removeAll()
+                    _password.removeAll()
+                    
+                    _pilot.push(.HomePage)
+                } else if state == .failed {
+                    presentAlert = true
+                }
+            }
+            .alert("Login Failed", isPresented: $presentAlert, actions: {
+                Button("OK") {
+                    presentAlert = false
+                }
+            }, message: {
+                Text(_viewModel.errMsg)
+            })
 
             HStack {
                 Text("Not have an account?")
@@ -54,21 +71,26 @@ struct LoginPage: View {
                 } label: {
                     Text("SignUp")
                 }
-                .disabled(state.isLoading)
+                .disabled(_viewModel.state == .proccessing)
             }
         }
         .padding()
         .sheet(isPresented: $_isSigningUp) {
             NavigationView {
-                SignUpPage(state: SignUpPageState())
+                SignUpPage()
             }
+        }
+        .onAppear {
+            _viewModel.resetState()
         }
     }
 }
 
 struct LoginPage_Previews: PreviewProvider {
+    @StateObject private static var _authViewModel = AuthViewModel(authRepository: AuthRepositoryImpl())
+
     static var previews: some View {
         LoginPage()
-            .inject(.new())
+            .environmentObject(_authViewModel)
     }
 }

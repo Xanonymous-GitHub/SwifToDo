@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E14934222850F65D008115A5 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14934212850F65D008115A5 /* DependencyInjector.swift */; };
-		E14934232850F65D008115A5 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14934212850F65D008115A5 /* DependencyInjector.swift */; };
 		E16AC7EE284BFBFA0009F304 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AC7ED284BFBFA0009F304 /* Tests_iOS.swift */; };
 		E16AC7F0284BFBFA0009F304 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AC7EF284BFBFA0009F304 /* Tests_iOSLaunchTests.swift */; };
 		E16AC7FA284BFBFA0009F304 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AC7F9284BFBFA0009F304 /* Tests_macOS.swift */; };
@@ -19,16 +17,12 @@
 		E16AC800284BFBFA0009F304 /* EventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16AC7D6284BFBF70009F304 /* EventList.swift */; };
 		E16AC801284BFBFA0009F304 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E16AC7D7284BFBFA0009F304 /* Assets.xcassets */; };
 		E16AC802284BFBFA0009F304 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E16AC7D7284BFBFA0009F304 /* Assets.xcassets */; };
-		E178AC9D284FEAE10093FDA0 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178AC9C284FEAE10093FDA0 /* AuthInteractor.swift */; };
-		E178AC9E284FEAE10093FDA0 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178AC9C284FEAE10093FDA0 /* AuthInteractor.swift */; };
+		E178AC9D284FEAE10093FDA0 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178AC9C284FEAE10093FDA0 /* AuthViewModel.swift */; };
+		E178AC9E284FEAE10093FDA0 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178AC9C284FEAE10093FDA0 /* AuthViewModel.swift */; };
 		E178ACA0284FEB180093FDA0 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178AC9F284FEB180093FDA0 /* LoginCredentials.swift */; };
 		E178ACA1284FEB180093FDA0 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178AC9F284FEB180093FDA0 /* LoginCredentials.swift */; };
 		E178ACA3284FEB3F0093FDA0 /* SignUpCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178ACA2284FEB3F0093FDA0 /* SignUpCredentials.swift */; };
 		E178ACA4284FEB3F0093FDA0 /* SignUpCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178ACA2284FEB3F0093FDA0 /* SignUpCredentials.swift */; };
-		E178ACA6284FEC690093FDA0 /* LoginPageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178ACA5284FEC690093FDA0 /* LoginPageState.swift */; };
-		E178ACA7284FEC690093FDA0 /* LoginPageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178ACA5284FEC690093FDA0 /* LoginPageState.swift */; };
-		E178ACA9284FEC740093FDA0 /* SignUpPageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178ACA8284FEC740093FDA0 /* SignUpPageState.swift */; };
-		E178ACAA284FEC740093FDA0 /* SignUpPageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E178ACA8284FEC740093FDA0 /* SignUpPageState.swift */; };
 		E1882562284E100D00AD8BA2 /* EventTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1882561284E100D00AD8BA2 /* EventTask.swift */; };
 		E1882563284E100D00AD8BA2 /* EventTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1882561284E100D00AD8BA2 /* EventTask.swift */; };
 		E1882565284E115600AD8BA2 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1882564284E115600AD8BA2 /* Event.swift */; };
@@ -87,7 +81,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E14934212850F65D008115A5 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		E16AC7D5284BFBF70009F304 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		E16AC7D6284BFBF70009F304 /* EventList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventList.swift; sourceTree = "<group>"; };
 		E16AC7D7284BFBFA0009F304 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,11 +93,9 @@
 		E16AC7F5284BFBFA0009F304 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16AC7F9284BFBFA0009F304 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		E16AC7FB284BFBFA0009F304 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
-		E178AC9C284FEAE10093FDA0 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		E178AC9C284FEAE10093FDA0 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		E178AC9F284FEB180093FDA0 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		E178ACA2284FEB3F0093FDA0 /* SignUpCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCredentials.swift; sourceTree = "<group>"; };
-		E178ACA5284FEC690093FDA0 /* LoginPageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageState.swift; sourceTree = "<group>"; };
-		E178ACA8284FEC740093FDA0 /* SignUpPageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageState.swift; sourceTree = "<group>"; };
 		E1882561284E100D00AD8BA2 /* EventTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTask.swift; sourceTree = "<group>"; };
 		E1882564284E115600AD8BA2 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E1882567284E117900AD8BA2 /* EventSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSymbols.swift; sourceTree = "<group>"; };
@@ -174,8 +165,7 @@
 			children = (
 				E14934202850F624008115A5 /* Resources */,
 				E178AC9B284FE9260093FDA0 /* Repositories */,
-				E178AC9A284FE9170093FDA0 /* Interactors */,
-				E178AC99284FE9080093FDA0 /* States */,
+				E178AC9A284FE9170093FDA0 /* ViewModel */,
 				E188259D284EA8B800AD8BA2 /* SwifTodo */,
 				E1882560284E0F7F00AD8BA2 /* Model */,
 				E16AC7D4284BFBF70009F304 /* View */,
@@ -241,21 +231,12 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
-		E178AC99284FE9080093FDA0 /* States */ = {
+		E178AC9A284FE9170093FDA0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				E178ACA5284FEC690093FDA0 /* LoginPageState.swift */,
-				E178ACA8284FEC740093FDA0 /* SignUpPageState.swift */,
+				E178AC9C284FEAE10093FDA0 /* AuthViewModel.swift */,
 			);
-			path = States;
-			sourceTree = "<group>";
-		};
-		E178AC9A284FE9170093FDA0 /* Interactors */ = {
-			isa = PBXGroup;
-			children = (
-				E178AC9C284FEAE10093FDA0 /* AuthInteractor.swift */,
-			);
-			path = Interactors;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E178AC9B284FE9260093FDA0 /* Repositories */ = {
@@ -284,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				E16AC7D5284BFBF70009F304 /* App.swift */,
-				E14934212850F65D008115A5 /* DependencyInjector.swift */,
 			);
 			name = SwifTodo;
 			sourceTree = "<group>";
@@ -463,19 +443,16 @@
 				E1882565284E115600AD8BA2 /* Event.swift in Sources */,
 				E1882568284E117900AD8BA2 /* EventSymbols.swift in Sources */,
 				E188257D284E545F00AD8BA2 /* TaskRow.swift in Sources */,
-				E178ACA6284FEC690093FDA0 /* LoginPageState.swift in Sources */,
 				E1882599284EA29100AD8BA2 /* FormStyles.swift in Sources */,
 				E1882590284E953800AD8BA2 /* LoginPage.swift in Sources */,
 				E1882577284E53B700AD8BA2 /* EventEditor.swift in Sources */,
-				E178AC9D284FEAE10093FDA0 /* AuthInteractor.swift in Sources */,
+				E178AC9D284FEAE10093FDA0 /* AuthViewModel.swift in Sources */,
 				E1882593284E9DD300AD8BA2 /* SignUpPage.swift in Sources */,
 				E188256E284E31D800AD8BA2 /* EventData.swift in Sources */,
 				E188257A284E540F00AD8BA2 /* EventDetail.swift in Sources */,
 				E1882571284E43D300AD8BA2 /* EventRow.swift in Sources */,
 				E188256B284E12E400AD8BA2 /* ColorOptions.swift in Sources */,
-				E178ACA9284FEC740093FDA0 /* SignUpPageState.swift in Sources */,
 				E1882596284E9E8D00AD8BA2 /* FormTextField.swift in Sources */,
-				E14934222850F65D008115A5 /* DependencyInjector.swift in Sources */,
 				E188259F284EA8E600AD8BA2 /* AuthRepository.swift in Sources */,
 				E1882562284E100D00AD8BA2 /* EventTask.swift in Sources */,
 				E178ACA0284FEB180093FDA0 /* LoginCredentials.swift in Sources */,
@@ -494,19 +471,16 @@
 				E1882566284E115600AD8BA2 /* Event.swift in Sources */,
 				E1882569284E117900AD8BA2 /* EventSymbols.swift in Sources */,
 				E188257E284E545F00AD8BA2 /* TaskRow.swift in Sources */,
-				E178ACA7284FEC690093FDA0 /* LoginPageState.swift in Sources */,
 				E188259A284EA29100AD8BA2 /* FormStyles.swift in Sources */,
 				E1882591284E953800AD8BA2 /* LoginPage.swift in Sources */,
 				E1882578284E53B700AD8BA2 /* EventEditor.swift in Sources */,
-				E178AC9E284FEAE10093FDA0 /* AuthInteractor.swift in Sources */,
+				E178AC9E284FEAE10093FDA0 /* AuthViewModel.swift in Sources */,
 				E1882594284E9DD300AD8BA2 /* SignUpPage.swift in Sources */,
 				E188256F284E31D800AD8BA2 /* EventData.swift in Sources */,
 				E188257B284E540F00AD8BA2 /* EventDetail.swift in Sources */,
 				E1882572284E43D300AD8BA2 /* EventRow.swift in Sources */,
 				E188256C284E12E400AD8BA2 /* ColorOptions.swift in Sources */,
-				E178ACAA284FEC740093FDA0 /* SignUpPageState.swift in Sources */,
 				E1882597284E9E8D00AD8BA2 /* FormTextField.swift in Sources */,
-				E14934232850F65D008115A5 /* DependencyInjector.swift in Sources */,
 				E18825A0284EA8E600AD8BA2 /* AuthRepository.swift in Sources */,
 				E1882563284E100D00AD8BA2 /* EventTask.swift in Sources */,
 				E178ACA1284FEB180093FDA0 /* LoginCredentials.swift in Sources */,

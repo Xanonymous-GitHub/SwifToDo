@@ -31,7 +31,7 @@ struct swiftodoApp: App {
     @StateObject private var _eventData = EventData()
     @StateObject private var _pilot = UIPilot(initial: AppRoute.LoginPage)
 
-    private let _diContainer = DIContainer(interactors: .new())
+    @StateObject private var _authViewModel = AuthViewModel(authRepository: AuthRepositoryImpl())
 
     var body: some Scene {
         WindowGroup {
@@ -39,16 +39,14 @@ struct swiftodoApp: App {
                 switch route {
                 case .HomePage:
                     return AnyView(
-                        NavigationView {
-                            EventList()
-                            Text("Select an Event")
-                                .foregroundStyle(.secondary)
-                        }.environmentObject(_eventData)
+                        EventList()
+                            .environmentObject(_eventData)
+                            .environmentObject(_authViewModel)
                     )
                 case .LoginPage:
                     return AnyView(
                         LoginPage()
-                            .inject(_diContainer)
+                            .environmentObject(_authViewModel)
                     )
                 }
             }

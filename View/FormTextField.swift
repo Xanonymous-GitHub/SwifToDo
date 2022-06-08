@@ -16,8 +16,10 @@ struct FormTextField: View {
         HStack {
             if isSecure {
                 SecureField(hintText, text: textContent)
+                    .autocapitalization(.none)
             } else {
                 TextField(hintText, text: textContent)
+                    .autocapitalization(.none)
             }
         }
         .padding()

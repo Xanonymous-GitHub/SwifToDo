@@ -9,6 +9,8 @@ import SwiftUI
 
 struct EventList: View {
     @EnvironmentObject var eventData: EventData
+    @EnvironmentObject private var _viewModel: AuthViewModel
+
     @State private var _newEvent = Event()
     @State private var _isAddingNewEvent = false
 
@@ -42,7 +44,7 @@ struct EventList: View {
                 }
             }
         }
-        .navigationTitle("SwifToDo")
+        .navigationTitle("SwifToDo, Hi \(_viewModel.currentUser?.displayName ?? "")")
         .toolbar {
             ToolbarItem {
                 Button {
