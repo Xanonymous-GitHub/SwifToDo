@@ -48,7 +48,7 @@ struct LoginPage: View {
                 if state == .success {
                     _email.removeAll()
                     _password.removeAll()
-                    
+
                     _pilot.push(.HomePage)
                 } else if state == .failed {
                     presentAlert = true
@@ -78,10 +78,10 @@ struct LoginPage: View {
         .sheet(isPresented: $_isSigningUp) {
             NavigationView {
                 SignUpPage()
+                    .onAppear {
+                        _viewModel.resetState()
+                    }
             }
-        }
-        .onAppear {
-            _viewModel.resetState()
         }
     }
 }

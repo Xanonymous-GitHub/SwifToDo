@@ -49,7 +49,8 @@ struct SignUpPage: View {
             .buttonStyle(FormMainActivityButtonStyle())
             .disabled(_viewModel.state == .proccessing)
             .onReceive(_viewModel.$state) { state in
-                if state == .success {
+                if state == .signUpSuccess {
+                    _viewModel.resetState()
                     dismiss()
                 } else if state == .failed {
                     presentAlert = true
@@ -67,16 +68,11 @@ struct SignUpPage: View {
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
+                    _viewModel.resetState()
                     dismiss()
                 }
                 .disabled(_viewModel.state == .proccessing)
             }
-        }
-        .onAppear {
-            _viewModel.resetState()
-        }
-        .onDisappear {
-            _viewModel.resetState()
         }
     }
 }

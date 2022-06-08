@@ -12,6 +12,7 @@ enum AuthStates {
     case initial
     case proccessing
     case success
+    case signUpSuccess
     case failed
 }
 
@@ -52,7 +53,7 @@ enum AuthStates {
         Task {
             do {
                 try await _authRepository.signUp(username: credentials.userName, email: credentials.email, password: credentials.password)
-                state = .success
+                state = .signUpSuccess
             } catch {
                 errMsg = error.localizedDescription
                 state = .failed

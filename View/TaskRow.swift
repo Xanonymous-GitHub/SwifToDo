@@ -14,7 +14,7 @@ struct TaskRow: View {
     var body: some View {
         HStack {
             Button {
-
+                task.isCompleted.toggle()
             } label: {
                 Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
             }

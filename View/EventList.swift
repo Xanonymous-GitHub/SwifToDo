@@ -24,6 +24,7 @@ struct EventList: View {
                         ForEach(sortedEvents) { $event in
                             NavigationLink {
                                 EventEditor(event: $event)
+                                    .environmentObject(eventData)
                             } label: {
                                  EventRow(event: event)
                             }
@@ -44,7 +45,8 @@ struct EventList: View {
                 }
             }
         }
-        .navigationTitle("SwifToDo, Hi \(_viewModel.currentUser?.displayName ?? "")")
+        .navigationBarBackButtonHidden(true)
+        .navigationTitle("Hi \(_viewModel.currentUser?.displayName ?? "")")
         .toolbar {
             ToolbarItem {
                 Button {
