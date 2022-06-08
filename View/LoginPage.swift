@@ -10,13 +10,15 @@ import SwiftUI
 struct LoginPage: View {
     @State private var _email: String = ""
     @State private var _password: String = ""
-
     @State private var _isSigningUp = false
 
-    @State private var _isBeingProcessed = false
+    @Environment(\.injected) var injected: DIContainer
+    @EnvironmentObject var state: LoginPageState
 
     var body: some View {
         VStack {
+            let authInteractor = injected.interactors.authInteractor
+
             HStack {
                 Text("Welcome!")
                     .font(.system(size: 40))
@@ -26,15 +28,14 @@ struct LoginPage: View {
             .padding()
 
             FormTextField(hintText: "Email", textContent: $_email)
-                .disabled(_isBeingProcessed)
+                .disabled(state.isLoading)
             FormTextField(hintText: "Password", textContent: $_password, isSecure: true)
-                .disabled(_isBeingProcessed)
+                .disabled(state.isLoading)
 
             Button {
-                // TODO: remove DEV code.
-                _isBeingProcessed = true
+                authInteractor.login(credentials: LoginCredentials(email: _email, password: _password))
             } label: {
-                if _isBeingProcessed {
+                if state.isLoading {
                     ProgressView()
                 } else {
                     Text("Login")
@@ -42,7 +43,7 @@ struct LoginPage: View {
                 }
             }
             .buttonStyle(FormMainActivityButtonStyle())
-            .disabled(_isBeingProcessed)
+            .disabled(state.isLoading)
 
             HStack {
                 Text("Not have an account?")
@@ -53,13 +54,13 @@ struct LoginPage: View {
                 } label: {
                     Text("SignUp")
                 }
-                .disabled(_isBeingProcessed)
+                .disabled(state.isLoading)
             }
         }
         .padding()
         .sheet(isPresented: $_isSigningUp) {
             NavigationView {
-                SignUpPage()
+                SignUpPage(state: SignUpPageState())
             }
         }
     }
@@ -68,5 +69,6 @@ struct LoginPage: View {
 struct LoginPage_Previews: PreviewProvider {
     static var previews: some View {
         LoginPage()
+            .inject(.new())
     }
 }

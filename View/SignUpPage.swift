@@ -13,11 +13,13 @@ struct SignUpPage: View {
     @State private var _password: String = ""
     @State private var _password2: String = ""
 
-    @State private var _isBeingProcessed = false
-
+    @Environment(\.injected) var injected: DIContainer
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var state: SignUpPageState
 
     var body: some View {
+        let authInteractor = injected.interactors.authInteractor
+
         VStack {
             HStack {
                 Text("Join Us!")
@@ -28,19 +30,18 @@ struct SignUpPage: View {
             .padding()
 
             FormTextField(hintText: "Name", textContent: $_username)
-                .disabled(_isBeingProcessed)
+                .disabled(state.isLoading)
             FormTextField(hintText: "Email", textContent: $_email)
-                .disabled(_isBeingProcessed)
+                .disabled(state.isLoading)
             FormTextField(hintText: "Password", textContent: $_password, isSecure: true)
-                .disabled(_isBeingProcessed)
+                .disabled(state.isLoading)
             FormTextField(hintText: "Password", textContent: $_password2, isSecure: true)
-                .disabled(_isBeingProcessed)
+                .disabled(state.isLoading)
 
             Button {
-                // TODO: remove DEV code.
-                _isBeingProcessed = true
+                authInteractor.signUp(credentials: SignUpCredentials(userName: _username, email: _email, password: _password))
             } label: {
-                if _isBeingProcessed {
+                if state.isLoading {
                     ProgressView()
                 } else {
                     Text("SignUp")
@@ -48,7 +49,7 @@ struct SignUpPage: View {
                 }
             }
             .buttonStyle(FormMainActivityButtonStyle())
-            .disabled(_isBeingProcessed)
+            .disabled(state.isLoading)
         }
         .padding()
         .toolbar {
@@ -56,7 +57,7 @@ struct SignUpPage: View {
                 Button("Cancel") {
                     dismiss()
                 }
-                .disabled(_isBeingProcessed)
+                .disabled(state.isLoading)
             }
         }
     }
@@ -65,5 +66,6 @@ struct SignUpPage: View {
 struct SignUpPage_Previews: PreviewProvider {
     static var previews: some View {
         SignUpPage()
+            .inject(.new())
     }
 }

@@ -8,7 +8,14 @@
 import Foundation
 import FirebaseAuth
 
-class AuthViewModel: ObservableObject {
+protocol AuthRepository {
+    func login(email: String, password: String) async throws
+    func signUp(username: String, email: String, password: String) async throws
+    var currentUser: User? { get }
+    var isLoggedin: Bool { get }
+}
+
+class AuthRepositoryImpl: AuthRepository {
     private let _auth = Auth.auth()
 
     var currentUser: User? {

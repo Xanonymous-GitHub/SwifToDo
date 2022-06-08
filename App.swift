@@ -28,23 +28,28 @@ enum AppRoute: Equatable {
 @main
 struct swiftodoApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject private var eventData = EventData()
-    @StateObject private var pilot = UIPilot(initial: AppRoute.LoginPage)
+    @StateObject private var _eventData = EventData()
+    @StateObject private var _pilot = UIPilot(initial: AppRoute.LoginPage)
+
+    private let _diContainer = DIContainer(interactors: .new())
 
     var body: some Scene {
         WindowGroup {
-            UIPilotHost(pilot)  { route in
+            UIPilotHost(_pilot)  { route in
                 switch route {
-                case.HomePage:
+                case .HomePage:
                     return AnyView(
                         NavigationView {
                             EventList()
                             Text("Select an Event")
                                 .foregroundStyle(.secondary)
-                        }.environmentObject(eventData)
+                        }.environmentObject(_eventData)
                     )
                 case .LoginPage:
-                    return AnyView(LoginPage())
+                    return AnyView(
+                        LoginPage()
+                            .inject(_diContainer)
+                    )
                 }
             }
         }
