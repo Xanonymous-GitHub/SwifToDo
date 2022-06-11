@@ -5,8 +5,8 @@
 //  Created by TeU on 2022/6/8.
 //
 
-import Foundation
 import FirebaseAuth
+import Foundation
 
 enum AuthStates {
     case initial
@@ -49,7 +49,7 @@ enum AuthStates {
 
     func signUp(credentials: SignUpCredentials) {
         state = .proccessing
-        
+
         Task {
             do {
                 try await _authRepository.signUp(username: credentials.userName, email: credentials.email, password: credentials.password)

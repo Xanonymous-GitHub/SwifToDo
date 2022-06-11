@@ -26,10 +26,8 @@ struct EventDetail: View {
                     .buttonStyle(.plain)
                     .padding(.horizontal, 5)
 
-
                     TextField("New Event", text: $event.title)
                         .font(.title2)
-
                 }
                 .padding(.top, 5)
 

@@ -20,13 +20,13 @@ struct EventList: View {
                 let sortedEvents = eventData.sortedEvents(period: period)
 
                 if !sortedEvents.isEmpty {
-                    Section (content: {
+                    Section(content: {
                         ForEach(sortedEvents) { $event in
                             NavigationLink {
                                 EventEditor(event: $event)
                                     .environmentObject(eventData)
                             } label: {
-                                 EventRow(event: event)
+                                EventRow(event: event)
                             }
                             .swipeActions {
                                 Button(role: .destructive) {

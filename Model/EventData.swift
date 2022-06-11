@@ -38,7 +38,7 @@ class EventData: ObservableObject {
                             return $0.isPast
                         }
                     }
-                    .sorted{ $0.date < $1.date }
+                    .sorted { $0.date < $1.date }
             },
             set: { events in
                 for event in events {
@@ -57,11 +57,11 @@ enum Period: String, CaseIterable, Identifiable {
     case future = "Future"
     case past = "Past"
 
-    var name: String { self.rawValue }
+    var name: String { rawValue }
     var id: String { name }
 }
 
-fileprivate extension Date {
+private extension Date {
     static func from(year: Int, month: Int, day: Int) -> Date {
         var dateComponents = DateComponents()
         dateComponents.year = year

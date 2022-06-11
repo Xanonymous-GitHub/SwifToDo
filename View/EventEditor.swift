@@ -40,7 +40,7 @@ struct EventEditor: View {
                 .onAppear {
                     eventCopy = event
                 }
-                .onChange(of: eventCopy){ _ in
+                .onChange(of: eventCopy) { _ in
                     if !isDeleted {
                         event = eventCopy
                     }

@@ -18,7 +18,7 @@ struct EventSymbols {
 
     static func randomNames(amount: Int) -> [String] {
         var names: [String] = []
-        for _ in 0..<amount {
+        for _ in 0 ..< amount {
             names.append(randomName())
         }
 

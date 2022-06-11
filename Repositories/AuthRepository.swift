@@ -5,8 +5,8 @@
 //  Created by TeU on 2022/6/7.
 //
 
-import Foundation
 import FirebaseAuth
+import Foundation
 
 protocol AuthRepository {
     func login(email: String, password: String) async throws

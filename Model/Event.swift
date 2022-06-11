@@ -44,7 +44,7 @@ struct Event: Identifiable, Hashable {
     }
 }
 
-fileprivate extension Date {
+private extension Date {
     func someDaysOut(days: Int) -> Date {
         Calendar.autoupdatingCurrent.date(byAdding: .day, value: days, to: self) ?? self
     }
